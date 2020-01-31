@@ -23,6 +23,7 @@ jobs:
         run: |
           pip3 install PyInstaller
           pip3 install -r requirements.txt
+          pip3 install . 
           
       - name: Create .exe
         run: |
@@ -31,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v1.0.0
         with:
           # Artifact name
-          name: guiscrcpy-$(git rev-parse --short "$GITHUB_SHA").exe
+          name: guiscrcpy-beta.exe
           # Directory containing files to upload
           path: dist/guiscrcpy.exe
 
