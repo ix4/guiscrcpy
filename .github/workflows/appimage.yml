@@ -14,9 +14,9 @@ jobs:
           fetch-depth: 1
       - name: get Bundle
         run: |
-          wget https://github.com/AppImage/pkg2appimage/releases/download/continuous/pkg2appimage-continuous-x86_64.AppImage
-          chmod +x *
-          ./pkg2appImage*.AppImage io.srevinsaju.guiscrcpy.yml
+          git clone https://github.com/AppImage/pkg2appimage.git --depth=1
+          cd pkg2appimage
+          ./pkg2appImage*.AppImage ../io.srevinsaju.guiscrcpy.yml
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
