@@ -9,6 +9,8 @@ jobs:
       - name: Dependencies
         run: |
           sudo apt install libsnappy-dev libsqlite3-dev desktop-file-utils python3-virtualenv python3-venv
+          pip3 install virtualenv
+          sudo /usr/bin/easy_install virtualenv
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
