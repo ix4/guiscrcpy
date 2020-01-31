@@ -11,6 +11,7 @@ jobs:
           sudo apt install libsnappy-dev libsqlite3-dev desktop-file-utils python3-virtualenv python3-venv
           sudo pip3 install virtualenv
           sudo ln -s /usr/lib/python3/dist-packages/virtualenv.py /usr/local/bin/virtualenv
+          sudo chmod +x /usr/local/bin/virtualenv
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
