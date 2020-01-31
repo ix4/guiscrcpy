@@ -23,9 +23,8 @@ jobs:
           chmod +x bin/*
 
           # Build the AppDir, this directory bundles everything guiscrcpy needs to run
-          ROOT=$(dirname $(pwd))
           
-          PIP_REQUIREMENTS="$ROOT" ./bin/linuxdeploy-x86_64.AppImage --plugin python --appdir AppDir -i guiscrcpy/ui/ui/guiscrcpy_logo.png -d guiscrcpy.desktop --custom-apprun=AppRun.guiscrcpy
+          ./bin/linuxdeploy-x86_64.AppImage --plugin python --appdir AppDir -i guiscrcpy/ui/ui/guiscrcpy_logo.png -d guiscrcpy.desktop --custom-apprun=AppRun.guiscrcpy
           # Build the first appimage
           ./bin/appimagetool-x86_64.AppImage AppDir guiscrcpy.AppImage
           
