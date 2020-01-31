@@ -12,6 +12,7 @@ jobs:
     - name: Clone pkg2appimage
       run: |
         sudo apt install desktop-file-utils
+        sudo apt install wget
         git clone https://github.com/AppImage/pkg2appimage 
         echo 0
     - name: Create AppImage
