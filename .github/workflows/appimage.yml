@@ -18,7 +18,10 @@ jobs:
           mv linuxdeploy-x86_64.AppImage bin/linuxdeploy-x86_64.AppImage
           wget https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
           mv appimagetool-x86_64.AppImage bin/appimagetool-x86_64.AppImage
+          wget https://github.com/niess/linuxdeploy-plugin-python/releases/download/continuous/linuxdeploy-plugin-python-x86_64.AppImage
+          mv linuxdeploy-plugin-python-x86_64.AppImage bin/linuxdeploy-plugin-python-x86_64.AppImage
           chmod +x bin/*
+          
           
           APPIMAGETOOL=$(openssl sha256 bin/appimagetool-x86_64.AppImage | cut -d'=' -f2 | sed 's/ //')
           if [ "$APPIMAGETOOL" != "d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13" ]
