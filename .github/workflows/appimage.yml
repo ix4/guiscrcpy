@@ -21,30 +21,14 @@ jobs:
           wget https://github.com/niess/linuxdeploy-plugin-python/releases/download/continuous/linuxdeploy-plugin-python-x86_64.AppImage
           mv linuxdeploy-plugin-python-x86_64.AppImage bin/linuxdeploy-plugin-python-x86_64.AppImage
           chmod +x bin/*
-          
-          
-          APPIMAGETOOL=$(openssl sha256 bin/appimagetool-x86_64.AppImage | cut -d'=' -f2 | sed 's/ //')
-          if [ "$APPIMAGETOOL" != "d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13" ]
-          then
-            echo "unexpected appimagetool hash: $APPIMAGETOOL"
-            false
-          fi
 
-          PYTHONPLUGIN=$(openssl sha256 bin/linuxdeploy-plugin-python-x86_64.AppImage | cut -d'=' -f2 | sed 's/ //')
-          if [ "$PYTHONPLUGIN" != "eb9c4bfa4ae12c71e6fe4f400926bd87759ef762d1a48c242ab31f9db15a7863" ]
-          then
-            echo "unexpected pythonplugin hash: $PYTHONPLUGIN"
-            false
-          fi
-          
-          chmod -R +x bin
-          
           # Build the AppDir, this directory bundles everything guiscrcpy needs to run
           ROOT=$(dirname $(pwd))
           
           PIP_REQUIREMENTS="$ROOT" ./bin/linuxdeploy-x86_64.AppImage --plugin python --appdir AppDir -i guiscrcpy/ui/ui/guiscrcpy_logo.png -d guiscrcpy.desktop --custom-apprun=AppRun.guiscrcpy
           # Build the first appimage
           ./bin/appimagetool-x86_64.AppImage AppDir guiscrcpy.AppImage
+          
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
