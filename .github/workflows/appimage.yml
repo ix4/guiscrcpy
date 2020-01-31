@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Dependencies
         run: |
-          sudo apt install libsnappy-dev libsqlite3-dev
+          sudo apt install libsnappy-dev libsqlite3-dev desktop-file-utils
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
