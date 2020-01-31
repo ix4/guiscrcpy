@@ -16,6 +16,7 @@ jobs:
         run: |
           git clone https://github.com/AppImage/pkg2appimage.git --depth=1
           cd pkg2appimage
+          chmod +x ./pkg2appimage
           ./pkg2appImage ../io.srevinsaju.guiscrcpy.yml
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
