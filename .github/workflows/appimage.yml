@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Dependencies
         run: |
-          sudo apt install libsnappy-dev libsqlite3-dev desktop-file-utils python3-virtualenv
+          sudo apt install libsnappy-dev libsqlite3-dev desktop-file-utils python3-virtualenv python3-venv
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
