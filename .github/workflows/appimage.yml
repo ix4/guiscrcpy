@@ -27,4 +27,4 @@ jobs:
           # Artifact name
           name: guiscrcpy.AppImage
           # Directory containing files to upload
-          path: out/guiscrcpy*.AppImage
+          path: pkg2appimage/out/guiscrcpy*.AppImage
