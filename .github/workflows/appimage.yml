@@ -6,32 +6,21 @@ jobs:
     name: AppImage
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt install libsnappy-dev libsqlite3-dev
+      - name: Dependencies
+        run: |
+          sudo apt install libsnappy-dev libsqlite3-dev
+          wget https://github.com/AppImage/pkg2appimage/releases/download/continuous/pkg2appimage-continuous-x86_64.AppImage
+          chmod +x *
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
       - name: get Bundle
         run: |
-
-          wget https://github.com/TheAssassin/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
-          mkdir bin
-          mv linuxdeploy-x86_64.AppImage bin/linuxdeploy-x86_64.AppImage
-          wget https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
-          mv appimagetool-x86_64.AppImage bin/appimagetool-x86_64.AppImage
-          wget https://github.com/niess/linuxdeploy-plugin-python/releases/download/continuous/linuxdeploy-plugin-python-x86_64.AppImage
-          mv linuxdeploy-plugin-python-x86_64.AppImage bin/linuxdeploy-plugin-python-x86_64.AppImage
-          chmod +x bin/*
-
-          # Build the AppDir, this directory bundles everything guiscrcpy needs to run
-          
-          ./bin/linuxdeploy-x86_64.AppImage --plugin python --appdir AppDir -i guiscrcpy/ui/ui/guiscrcpy_logo.png -d guiscrcpy.desktop --custom-apprun=AppRun.guiscrcpy
-          # Build the first appimage
-          ./bin/appimagetool-x86_64.AppImage AppDir guiscrcpy.AppImage
-          
+          ./pkg2appImage*.AppImage io.srevinsaju.guiscrcpy.yml
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           # Artifact name
           name: guiscrcpy.AppImage
           # Directory containing files to upload
-          path: guiscrcpy.AppImage
+          path: out/guiscrcpy*.AppImage
